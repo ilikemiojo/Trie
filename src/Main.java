@@ -37,5 +37,14 @@ public class Main {
         for (String word: myTrie.autocomplete("am")) {
             System.out.println("\n" + word);
         }
+
+        // TESTE DO REMOVE
+
+        myTrie.remove("ame");
+        myTrie.remove("ameixa");
+
+        for (String word: myTrie.autocomplete("am")) {
+            System.out.println("\n" + word);
+        }
     }
 }
