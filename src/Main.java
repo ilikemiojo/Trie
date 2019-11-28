@@ -16,6 +16,8 @@ public class Main {
         myTrie.insert("eles");
         myTrie.insert("elas");
 
+        /*
+
         // TESTE DO INSERT E SEARCH
 
         String output[] = {"Not present in trie", "Present in trie"};
@@ -32,19 +34,29 @@ public class Main {
         if (myTrie.search("opa")) { System.out.println("opa --- " + output[1]); }
         else { System.out.println("opa --- " + output[0]); }
 
+         */
+
         // TESTE DO AUTOCOMPLETE
 
         for (String word: myTrie.autocomplete("am")) {
             System.out.println("\n" + word);
         }
 
+        for (String word: myTrie.autocomplete("am", 4)) {
+            System.out.println("\n" + word);
+        }
+
+        /*
+
         // TESTE DO REMOVE
 
         myTrie.remove("ame");
         myTrie.remove("ameixa");
 
-        for (String word: myTrie.autocomplete("am")) {
+        for (String word: myTrie.autocomplete("")) {
             System.out.println("\n" + word);
         }
+
+         */
     }
 }

@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class Trie {
 
@@ -113,6 +111,19 @@ public class Trie {
         return results;
     }
 
+    public List<String> autocomplete(String prefix, int maxSuggestions) {
+        TrieNode prefixNode = goToNode(prefix);
+        List<String> results;
+
+        results = getWords(prefixNode);
+
+        for (int i = maxSuggestions; i < results.size(); i++) {
+            results.remove(i);
+        }
+
+        return results;
+    }
+
     public TrieNode goToNode(String string) {
         TrieNode currentNode = root;
 
@@ -143,6 +154,16 @@ public class Trie {
             }
         }
 
+        sortWords(results);
+
         return results;
+    }
+
+    public void sortWords(List<String> words) {
+        for (int i = 0; i < (words.size() - 1); i++) {
+            if (words.get(i).length() > words.get(i + 1).length()) {
+                Collections.swap(words, i, (i + 1));
+            }
+        }
     }
 }
