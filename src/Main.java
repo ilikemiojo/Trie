@@ -19,9 +19,22 @@ public class Main {
         }
 
         if (args.length == 3) {
-            myTrie.autocomplete(args[1], Integer.parseInt(args[2]));
+            if (Integer.parseInt(args[2]) > 1) {
+                System.out.println("Primeiros " + args[2] + " resultados encontrados começando com '" + args[1] + "':\n");
+            } else if (Integer.parseInt(args[2]) == 1) {
+                System.out.println("Primeiro resultado encontrado começando com '" + args[1] + "':\n");
+            }
+
+            for (String word: myTrie.autocomplete(args[1], Integer.parseInt(args[2]))) {
+                System.out.println(word + "\n");
+            }
+
         } else {
-            myTrie.autocomplete(args[1]);
+            System.out.println("Todos os resultados encontrados começando com '" + args[1] + "':\n");
+
+            for (String word: myTrie.autocomplete(args[1])) {
+                System.out.println(word + "\n");
+            }
         }
     }
 }
